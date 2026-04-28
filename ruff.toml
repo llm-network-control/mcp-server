@@ -1,0 +1,9 @@
+src = ["server", "routers", "mock_routers"]
+
+line-length = 88
+
+[lint]
+select = ["E", "F", "W", "I", "B"]
+
+[format]
+quote-style = "single"
