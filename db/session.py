@@ -1,7 +1,6 @@
 """
-Работа с сессий
+Работа с сессией
 """
-
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     async_sessionmaker,
@@ -11,6 +10,7 @@ from sqlalchemy.ext.asyncio import (
 # from app.config import DATABASE_URL
 
 DATABASE_URL = 'sqlite+aiosqlite:///./db.sqlite3'
+
 
 engine = create_async_engine(
     DATABASE_URL,

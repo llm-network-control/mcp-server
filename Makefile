@@ -22,3 +22,9 @@ test:
 
 coverage:
 	pytest -s --cov --cov-report html --cov-fail-under 100
+
+migrate:
+	alembic upgrade head
+
+make_migrations:
+	alembic revision --autogenerate
