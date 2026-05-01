@@ -1,4 +1,6 @@
 from os import getenv
 
-DATABASE_URL = getenv('DATABASE_URL', 'sqlite+aiosqlite:///./db.sqlite3')
-SYNC_DATABASE_URL = getenv('DATABASE_URL', 'sqlite:///./db.sqlite3')
+DB_PATH = getenv('DB_PATH', './db.sqlite3')
+
+DATABASE_URL = f'sqlite+aiosqlite:///{DB_PATH}'
+SYNC_DATABASE_URL = f'sqlite:///{DB_PATH}'

@@ -3,7 +3,7 @@
 """
 from typing import List
 
-from sqlalchemy import select
+from sqlalchemy import select, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from routers.models import Router as RouterModel
@@ -91,3 +91,14 @@ async def get_routers_by_ssid(
         for item in objects
     ]
     return result_list
+
+
+async def delete_routers(session: AsyncSession) -> None:
+    """
+    Удалить все роутеры
+    :param session: текущая сессия
+    :return: None
+    """
+    query = delete(DbRouter)
+    await session.execute(query)
+    await session.commit()
