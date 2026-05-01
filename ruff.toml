@@ -1,4 +1,4 @@
-src = ["server", "routers", "mock_routers"]
+src = ["server", "routers"]
 
 line-length = 88
 

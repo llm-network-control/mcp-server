@@ -1,5 +1,5 @@
 run:
-	python manage.py
+	python main.py
 
 pylint:
 	pylint $(shell git ls-files '*.py')
