@@ -3,6 +3,8 @@
 """
 from ipaddress import IPv4Network, IPv4Address
 from . import models
+from db import repository
+from db.session import session_cls
 
 
 async def parse_network(networks: set[IPv4Network]) -> int:
@@ -20,26 +22,25 @@ async def get_all_available_routers() -> list[models.Router]:
     Получение списка доступных роутеров
     :return: список доступных роутеров из базы данных
     """
-    mock_data = [
-        {
-            'ip': IPv4Address('192.168.1.1'),
-            'firmware': 'TestFirmware v1',
-        },
-        {
-            'ip': IPv4Address('192.168.1.2'),
-            'firmware': 'TestFirmware v2',
-        },
-    ]
-    return [models.create_router(**data) for data in mock_data]
+    async with session_cls() as session:
+        router_list = await repository.get_routers_list(
+            session,
+        )
+    return router_list
 
 
-async def get_router_by_ip(ip: IPv4Address) -> models.Router:
+async def get_router_by_ip(ip: IPv4Address) -> models.Router | None:
     """
     Поиск роутера по ip адресу
     :param ip: IP адрес роутера
-    :return: Router
+    :return: Router или None
     """
-    return models.create_router(ip, firmware='Test Firmware v1')
+    async with session_cls() as session:
+        router = await repository.get_router_by_ip(
+            session,
+            ip = str(ip)
+        )
+    return router
 
 
 async def get_routers_by_ssid(ssid: str) -> list[models.Router]:
@@ -48,10 +49,9 @@ async def get_routers_by_ssid(ssid: str) -> list[models.Router]:
     :param ssid: имя wifi сети
     :return: Router
     """
-    return [
-        models.create_router(
-            ip=IPv4Address('192.168.1.1'),
-            firmware='Test Firmware v1',
-            ssid=ssid,
+    async with session_cls() as session:
+        routers = await repository.get_routers_by_ssid(
+            session,
+            ssid=ssid
         )
-    ]
+    return routers

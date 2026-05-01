@@ -18,7 +18,6 @@ class Router:
     pppoe_password: str = None
 
 
-
 def create_router(
         ip: IPv4Address,
         firmware: str,

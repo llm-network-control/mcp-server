@@ -18,7 +18,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        make test
+        make coverage
   lint:
     runs-on: ubuntu-latest
     steps:
