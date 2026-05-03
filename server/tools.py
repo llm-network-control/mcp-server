@@ -10,7 +10,9 @@ import routers
 from .serializers import serialize
 
 mcp = FastMCP(
-    name="Network Control MCP Server"
+    name="Network Control MCP Server",
+    instructions='The server allows you to receive information about '
+                 'routers on the network, as well as manage their behavior'
 )
 
 
