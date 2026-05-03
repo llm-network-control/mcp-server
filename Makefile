@@ -21,7 +21,10 @@ test:
 	pytest
 
 coverage:
-	pytest -s --cov --cov-report html --cov-fail-under 100
+	pytest --cov --cov-report html --cov-fail-under 100
+
+coverage_ci:
+	pytest --cov --cov-fail-under 100
 
 migrate:
 	alembic upgrade head
