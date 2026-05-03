@@ -1,3 +1,6 @@
+"""
+Config package
+"""
 from os import getenv
 
 DB_PATH = getenv('DB_PATH', './db.sqlite3')

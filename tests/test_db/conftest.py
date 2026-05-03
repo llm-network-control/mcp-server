@@ -1,12 +1,13 @@
 """
 Fixtures для тестирования базы данных
 """
-import pytest_asyncio
 import pytest
-from db.models import Router as DbRouter
+import pytest_asyncio
+
 from db import adapters
-from db.session import session_cls
+from db.models import Router as DbRouter
 from db.repository import delete_routers
+from db.session import session_cls
 
 
 @pytest.fixture
@@ -22,6 +23,10 @@ def one_db_router(one_router) -> DbRouter:
 
 @pytest_asyncio.fixture
 async def session():
+    """
+    Fixture для текущей сессии
+    :return: Текущая сессия
+    """
     async with session_cls() as current_session:
         yield current_session
         await delete_routers(current_session)

@@ -1,11 +1,12 @@
 """
 Основные функции управления роутерами
 """
-from ipaddress import IPv4Network, IPv4Address
-from . import models
+from ipaddress import IPv4Address
+
 from db import repository
 from db.session import session_cls
 
+from . import models
 
 # async def parse_network(networks: set[IPv4Network]) -> int:
 #     """

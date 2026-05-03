@@ -2,8 +2,9 @@
 Test db/repository
 """
 import pytest
-from routers.models import Router as RouterModel
+
 from db import repository
+from routers.models import Router as RouterModel
 
 
 @pytest.mark.asyncio

@@ -1,15 +1,20 @@
-"""a
+"""
 Test routers/functions
 """
-import pytest_asyncio
 import pytest
-from routers import functions
-from db.session import session_cls
+import pytest_asyncio
+
 from db import repository
+from db.session import session_cls
+from routers import functions
 
 
 @pytest_asyncio.fixture(autouse=True)
 async def fill_db(one_router):
+    """
+    Заполняем базу тестовыми данными
+    :param one_router: Модель роутера
+    """
     async with session_cls() as session:
         # Чистим всё
         await repository.delete_routers(session)

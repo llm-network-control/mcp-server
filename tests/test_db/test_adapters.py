@@ -2,6 +2,7 @@
 Test db/adapters
 """
 from ipaddress import IPv4Address
+
 from db import adapters
 from db.models import Router as DbRouter
 from routers.models import Router as RouterModel

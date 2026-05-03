@@ -1,8 +1,8 @@
 """
 Модели данных
 """
-from ipaddress import IPv4Address
 import dataclasses
+from ipaddress import IPv4Address
 
 
 @dataclasses.dataclass(frozen=True)

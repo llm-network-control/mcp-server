@@ -2,7 +2,9 @@
 Общие fixtures
 """
 from ipaddress import IPv4Address
+
 import pytest
+
 from routers import models
 
 

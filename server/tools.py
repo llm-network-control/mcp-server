@@ -1,8 +1,13 @@
-from ipaddress import IPv4Address, IPv4Network
+"""
+MCP server tools
+"""
+from ipaddress import IPv4Address
+
 from fastmcp import FastMCP
-from .serializers import serialize
+
 import routers
 
+from .serializers import serialize
 
 mcp = FastMCP(
     name="Network Control MCP Server"
@@ -45,7 +50,9 @@ mcp = FastMCP(
     )
 )
 async def list_routers() -> list[dict]:
-
+    """
+    Список всех роутеров
+    """
     routers_list = await routers.get_all_available_routers()
 
     return [
@@ -63,7 +70,11 @@ async def list_routers() -> list[dict]:
 async def get_router_by_ip(
     ip: str,
 ) -> dict:
-
+    """
+    Получение роутера по ip адресу
+    :param ip: строка IP адреса
+    :return: словарь с данными роутера
+    """
     router = await routers.get_router_by_ip(
         ip=IPv4Address(ip)
     )
@@ -80,7 +91,11 @@ async def get_router_by_ip(
 async def find_routers_by_ssid(
     ssid: str,
 ) -> list[dict]:
-
+    """
+    Получение роутеров по SSID имени wifi
+    :param ssid: SSID
+    :return: список с данными рутеров
+    """
     found = await routers.get_routers_by_ssid(
         ssid=ssid
     )

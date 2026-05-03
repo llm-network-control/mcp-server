@@ -2,7 +2,10 @@
 Соответствие Моделей и Моделей в ORM
 """
 from ipaddress import IPv4Address
-from routers.models import Router as RouterModel, create_router
+
+from routers.models import Router as RouterModel
+from routers.models import create_router
+
 from .models import Router as DbRouter
 
 

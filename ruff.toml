@@ -1,4 +1,6 @@
-src = ["server", "routers"]
+# src = ["server", "routers", "tests", "db", "config"]
+src = ["."]
+exclude = ["alembic"]
 
 line-length = 88
 

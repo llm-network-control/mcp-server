@@ -3,12 +3,13 @@
 """
 from typing import List
 
-from sqlalchemy import select, delete
+from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from routers.models import Router as RouterModel
+
+from .adapters import db_to_router, router_to_db
 from .models import Router as DbRouter
-from .adapters import router_to_db, db_to_router
 
 
 async def save_router(

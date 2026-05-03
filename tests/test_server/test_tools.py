@@ -3,6 +3,7 @@ Test server/tools
 """
 import pytest
 import pytest_asyncio
+
 from db import repository
 from db.session import session_cls
 from routers.models import Router

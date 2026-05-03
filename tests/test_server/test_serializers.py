@@ -1,8 +1,8 @@
 """
 Test server/serializers
 """
-from server import serializers
 from routers import models
+from server import serializers
 
 
 def test_serialize(one_router_data_dict: dict, one_router: models.Router):

@@ -1,11 +1,9 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
 from alembic import context
 from config import SYNC_DATABASE_URL
 from db.models import Base
+from sqlalchemy import engine_from_config, pool
 
 config = context.config
 
