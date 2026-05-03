@@ -45,6 +45,7 @@ mcp = FastMCP(
 
 @mcp.tool(
     name="list_routers",
+    title='List routers',
     description=(
         "Return all routers currently stored in the database."
     )
@@ -63,6 +64,7 @@ async def list_routers() -> list[dict]:
 
 @mcp.tool(
     name="get_router_by_ip",
+    title='Get router by ip',
     description=(
         "Get information about a router by IP address."
     )
@@ -84,6 +86,7 @@ async def get_router_by_ip(
 
 @mcp.tool(
     name="find_routers_by_ssid",
+    title='Find routers by SSID',
     description=(
         "Find routers by WiFi SSID name."
     )
