@@ -31,3 +31,6 @@ migrate:
 
 make_migrations:
 	alembic revision --autogenerate
+
+make fill_db:
+	python fill_db_with_fake_data.py

@@ -28,5 +28,6 @@ async def session():
     :return: Текущая сессия
     """
     async with session_cls() as current_session:
+        await delete_routers(current_session)
         yield current_session
         await delete_routers(current_session)
