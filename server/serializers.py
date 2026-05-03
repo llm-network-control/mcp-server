@@ -10,4 +10,6 @@ def serialize(router: Router) -> dict:
     :param router: Router
     :return: dict
     """
-    return router.__dict__
+    result_dict = router.__dict__
+    result_dict['ip'] = str(router.__dict__['ip'])
+    return result_dict

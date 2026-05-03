@@ -7,14 +7,14 @@ from db import repository
 from db.session import session_cls
 
 
-async def parse_network(networks: set[IPv4Network]) -> int:
-    """
-    Анализ сети, поиск доступных устройств
-    :param networks: список сетей, например IPv4Network("172.14.80.0/24")
-    :return: Количество найденных устройств
-    """
-    assert networks
-    return 2
+# async def parse_network(networks: set[IPv4Network]) -> int:
+#     """
+#     Анализ сети, поиск доступных устройств
+#     :param networks: список сетей, например IPv4Network("172.14.80.0/24")
+#     :return: Количество найденных устройств
+#     """
+#     assert networks
+#     return 2
 
 
 async def get_all_available_routers() -> list[models.Router]:
