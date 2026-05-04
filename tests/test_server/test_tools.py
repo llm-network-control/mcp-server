@@ -1,6 +1,8 @@
 """
 Test server/tools
 """
+import json
+
 import pytest
 import pytest_asyncio
 
@@ -55,3 +57,13 @@ async def test_find_routers_by_ssid(one_router):
     """
     result = await tools.find_routers_by_ssid(one_router.ssid)
     assert [serialize(one_router)] == result
+
+
+@pytest.mark.asyncio
+async def test_health_check():
+    """
+    Test health_check: positive
+    """
+    result = await tools.health_check(None)
+    result_dict = json.loads(result.body.decode(encoding='utf-8'))
+    assert result_dict == {"status": "healthy", "service": "mcp-server"}

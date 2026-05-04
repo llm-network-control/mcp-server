@@ -4,6 +4,7 @@ MCP server tools
 from ipaddress import IPv4Address
 
 from fastmcp import FastMCP
+from starlette.responses import JSONResponse
 
 import routers
 
@@ -16,33 +17,13 @@ mcp = FastMCP(
 )
 
 
-# @mcp.tool(
-#     name="scan_network",
-#     description=(
-#         "Scan one or more IPv4 networks for available routers. "
-#         "Use when the user asks to discover or scan devices."
-#     )
-# )
-# async def scan_network(
-#     networks: list[str],
-# ) -> dict:
-#     """
-#     networks example:
-#     ["172.14.80.0/24", "172.14.81.0/24"]
-#     """
-#
-#     parsed_networks = {
-#         IPv4Network(net)
-#         for net in networks
-#     }
-#
-#     count = await routers.parse_network(
-#         networks=parsed_networks
-#     )
-#
-#     return {
-#         "devices_found": count,
-#     }
+@mcp.custom_route("/health", methods=["GET"])
+async def health_check(_) -> JSONResponse:
+    """
+    Health check
+    :return: JSONResponse
+    """
+    return JSONResponse({"status": "healthy", "service": "mcp-server"})
 
 
 @mcp.tool(
